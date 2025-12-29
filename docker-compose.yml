@@ -1,0 +1,16 @@
+services:
+  # This is your Python App
+  web-app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis-db
+    depends_on:
+      - redis-db
+
+  # This is the Redis Database
+  redis-db:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
