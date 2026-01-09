@@ -1,0 +1,15 @@
+cat <<EOF > .gitignore
+# Terraform junk
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Python junk
+venv/
+__pycache__/
+*.py[cod]
+
+# LocalStack / Local files
+.env
+EOF
