@@ -73,9 +73,10 @@ resource "kubernetes_deployment" "flask_api" {
       spec {
         container {
           name  = "flask-container"
-          # Ensure this matches the tag you use in deploy.py
-          image = "flask-telemetry:latest"
-          image_pull_policy = "Never" # Essential for local Kind clusters
+          # UPDATED: Pointing to your Mumbai ECR
+          image = "740994137212.dkr.ecr.ap-south-1.amazonaws.com/task-telemetry-api:latest"
+          # UPDATED: EKS nodes need to pull this from ECR
+          image_pull_policy = "Always"
 
           port {
             name = "http-metrics"
@@ -104,9 +105,8 @@ resource "kubernetes_service" "flask_api" {
     port {
       port        = 5000
       target_port = 5000
-      node_port   = 30001
     }
-    type = "NodePort"
+    type = "LoadBalancer"
   }
 }
 
@@ -161,5 +161,5 @@ resource "kubernetes_manifest" "flask_servicemonitor" {
 
 # 7. Define the S3 Bucket in Localstack
 resource "aws_s3_bucket" "task_storage" {
-  bucket = "task-telemetry-storage"
+  bucket = "task-telemetry-storage-akshay-740994"
 }
