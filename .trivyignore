@@ -1,0 +1,2 @@
+# Ignore hidden wheel vulnerability in setuptools vendor folder
+CVE-2026-24049

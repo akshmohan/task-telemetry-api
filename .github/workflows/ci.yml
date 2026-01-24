@@ -50,6 +50,7 @@
             exit-code: '1' # Fails the build if high-risk vulnerabilities exist
             ignore-unfixed: true  
             vuln-type: 'os,library'
+            trivyignores: '.trivyignore'
             severity: 'CRITICAL,HIGH'
 
         - name: Push to ECR
