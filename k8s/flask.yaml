@@ -32,8 +32,7 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: flask-api:v6
-          imagePullPolicy: Never
+          image: 740994137212.dkr.ecr.ap-south-1.amazonaws.com/task-telemetry-api:latest
           ports:
             - containerPort: 5000
           env:
