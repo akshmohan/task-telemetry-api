@@ -32,7 +32,8 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: 740994137212.dkr.ecr.ap-south-1.amazonaws.com/task-telemetry-api:latest
+          # Change this line in your flask.yaml
+          image: 740994137212.dkr.ecr.ap-south-1.amazonaws.com/task-telemetry-api:v1.0.1
           ports:
             - containerPort: 5000
           env:
