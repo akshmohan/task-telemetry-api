@@ -1,0 +1,20 @@
+cat <<EOF > alerts.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: flask-api-alerts
+  labels:
+    release: prometheus
+spec:
+  groups:
+  - name: flask-alerts
+    rules:
+    - alert: FlaskAppDown
+      expr: up{job="flask-api"} == 0
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Flask API is down"
+        description: "The Flask API pod has been down for more than 1 minute."
+EOF
